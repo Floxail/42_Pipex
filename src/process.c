@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: flvejux <flvejux@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 10:08:34 by flvejux           #+#    #+#             */
-/*   Updated: 2026/01/05 10:08:38 by flvejux          ###   ########.ch       */
+/*   Created: 2026/01/08 09:02:00 by flvejux           #+#    #+#             */
+/*   Updated: 2026/01/08 09:02:22 by flvejux          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ void	execute_pipex(t_pipex *data)
 {
 	pid_t	pid1;
 	pid_t	pid2;
-	int		status;
+	int		status1;
+	int		status2;
 
 	if (pipe(data->pipe_fd) == -1)
 		error_exit("pipe");
@@ -93,6 +94,6 @@ void	execute_pipex(t_pipex *data)
 	close(data->pipe_fd[1]);
 	close(data->infile);
 	close(data->outfile);
-	waitpid(pid1, &status, 0);
-	waitpid(pid2, &status, 0);
+	waitpid(pid1, &status1, 0);
+	waitpid(pid2, &status2, 0);
 }

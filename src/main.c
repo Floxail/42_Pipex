@@ -5,16 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: flvejux <flvejux@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 08:58:55 by flvejux           #+#    #+#             */
-/*   Updated: 2026/01/05 08:58:55 by flvejux          ###   ########.ch       */
+/*   Created: 2026/01/08 08:54:50 by flvejux           #+#    #+#             */
+/*   Updated: 2026/01/08 08:54:50 by flvejux          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-/*
-** init_data - Initializes the pipex data structure
-*/
 static void	init_data(t_pipex *data)
 {
 	data->infile = -1;
@@ -27,14 +24,7 @@ static void	init_data(t_pipex *data)
 	data->pipe_fd[1] = -1;
 }
 
-/*
-** main - Entry point for pipex program
-** Flow:
-** 1. Parse and validate arguments
-** 2. Extract PATH from environment
-** 3. Execute pipeline (fork, pipe, exec)
-** 4. Cleanup and exit
-*/
+
 
 int	main(int argc, char **argv, char **envp)
 {

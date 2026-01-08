@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: flvejux <flvejux@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 09:00:40 by flvejux           #+#    #+#             */
-/*   Updated: 2026/01/05 09:04:16 by flvejux          ###   ########.ch       */
+/*   Created: 2026/01/06 09:57:21 by flvejux           #+#    #+#             */
+/*   Updated: 2026/01/06 09:59:36 by flvejux          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
 
 int	parse_arguments(int argc, char **argv, t_pipex *data)
 {
@@ -35,7 +34,6 @@ int	parse_arguments(int argc, char **argv, t_pipex *data)
 	return (0);
 }
 
-
 int	validate_files(char *infile, char *outfile, t_pipex *data)
 {
 	data->infile = open(infile, O_RDONLY);
@@ -58,11 +56,6 @@ int	validate_files(char *infile, char *outfile, t_pipex *data)
 	return (0);
 }
 
-/*
-** parse_command - Splits command string into array
-** Handles quotes and arguments properly
-** Returns: NULL-terminated array of strings or NULL on failure
-*/
 char	**parse_command(char *cmd_str)
 {
 	char	**cmd_args;
