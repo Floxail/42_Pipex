@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: flvejux <flvejux@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/08 09:02:00 by flvejux           #+#    #+#             */
-/*   Updated: 2026/01/08 09:02:22 by flvejux          ###   ########.ch       */
+/*   Created: 2026/01/08 09:13:23 by flvejux           #+#    #+#             */
+/*   Updated: 2026/01/08 09:13:23 by flvejux          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
 
 void	child_process(t_pipex *data)
 {
