@@ -6,7 +6,7 @@
 /*   By: flvejux <flvejux@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 11:40:00 by flvejux           #+#    #+#             */
-/*   Updated: 2026/01/10 11:40:00 by flvejux          ###   ########.ch       */
+/*   Updated: 2026/01/10 11:56:35 by flvejux          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,8 @@ int	main(int argc, char **argv, char **envp)
 	init_data(&data);
 	data.envp = envp;
 	if (ft_strncmp(argv[1], "here_doc", 9) == 0)
-	{
 		if (setup_heredoc(&data, argc, argv) == -1)
 			return (EXIT_FAILURE);
-	}
 	else
 	{
 		if (setup_normal(&data, argc, argv) == -1)
@@ -91,10 +89,7 @@ int	main(int argc, char **argv, char **envp)
 	}
 	data.paths = get_paths(envp);
 	if (!data.paths)
-	{
-		cleanup_data(&data);
-		return (EXIT_FAILURE);
-	}
+		return (cleanup_data(&data), EXIT_FAILURE);
 	execute_pipex(&data, argc, argv);
 	cleanup_data(&data);
 	return (EXIT_SUCCESS);
