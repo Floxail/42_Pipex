@@ -15,9 +15,11 @@ NAME_BONUS	= pipex_bonus
 
 # Directories
 SRC_DIR		= src
+SRC_BONUS_DIR = src_bonus
 OBJ_DIR		= obj
 OBJ_DIR_BONUS = obj_bonus
-LIBFT_DIR	= libft
+LIBFT_DIR	= src/libft
+INC_DIR		= includes
 
 # Source files
 SRCS		= $(SRC_DIR)/main.c \
@@ -26,23 +28,23 @@ SRCS		= $(SRC_DIR)/main.c \
 			  $(SRC_DIR)/process.c \
 			  $(SRC_DIR)/utils.c
 
-SRCS_BONUS	= main_bonus.c \
-			  parsing_bonus.c \
-			  path_bonus.c \
-			  process_bonus.c \
-			  utils_bonus.c \
-			  get_herdoc_bonus.c
+SRCS_BONUS	= $(SRC_BONUS_DIR)/main.c \
+			  $(SRC_BONUS_DIR)/parsing.c \
+			  $(SRC_BONUS_DIR)/path.c \
+			  $(SRC_BONUS_DIR)/process.c \
+			  $(SRC_BONUS_DIR)/utils.c \
+			  $(SRC_BONUS_DIR)/get_herdoc.c
 
 # Object files
 OBJS		= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-OBJS_BONUS	= $(SRCS_BONUS:%.c=$(OBJ_DIR_BONUS)/%.o)
+OBJS_BONUS	= $(SRCS_BONUS:$(SRC_BONUS_DIR)/%.c=$(OBJ_DIR_BONUS)/%.o)
 
 # Libraries
 LIBFT		= $(LIBFT_DIR)/libft.a
 
 # Compiler and flags
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -I. -I$(LIBFT_DIR)
+CFLAGS		= -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIBFT_DIR)
 LDFLAGS		= -L$(LIBFT_DIR) -lft
 
 # Rules
@@ -56,7 +58,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "Compiled"
 
-$(OBJ_DIR_BONUS)/%.o: %.c | $(OBJ_DIR_BONUS)
+$(OBJ_DIR_BONUS)/%.o: $(SRC_BONUS_DIR)/%.c | $(OBJ_DIR_BONUS)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "Compiled bonus"
 

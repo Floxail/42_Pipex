@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_bonus.h                                      :+:      :+:    :+:   */
+/*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flvejux <flvejux@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/10 10:19:57 by flvejux           #+#    #+#             */
-/*   Updated: 2026/01/10 10:20:11 by flvejux          ###   ########.ch       */
+/*   Created: 2026/01/05 11:51:22 by flvejux           #+#    #+#             */
+/*   Updated: 2026/01/05 11:52:01 by flvejux          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_BONUS_H
-# define PIPEX_BONUS_H
+#ifndef PIPEX_H
+# define PIPEX_H
 
 # include <fcntl.h>
 # include <unistd.h>
@@ -20,15 +20,17 @@
 # include <stdio.h>
 # include <errno.h>
 # include <string.h>
-# include "libft/libft.h"
+# include "libft.h"
 
 typedef struct s_pipex
 {
 	int		infile;
 	int		outfile;
+	char	**cmd1;
+	char	**cmd2;
 	char	**envp;
 	char	**paths;
-	int		is_heredoc;
+	int		pipe_fd[2];
 }	t_pipex;
 
 /* Parsing */
@@ -41,10 +43,9 @@ char	**get_paths(char **envp);
 char	*find_command_path(char *cmd, char **paths);
 
 /* Process execution */
-void	execute_pipex(t_pipex *data, int argc, char **argv);
-
-/* Heredoc */
-int		get_heredoc(char *limiter);
+void	execute_pipex(t_pipex *data);
+void	child_process(t_pipex *data);
+void	parent_process(t_pipex *data);
 
 /* Utils */
 void	error_exit(char *msg);

@@ -80,8 +80,10 @@ int	main(int argc, char **argv, char **envp)
 	init_data(&data);
 	data.envp = envp;
 	if (ft_strncmp(argv[1], "here_doc", 9) == 0)
+	{
 		if (setup_heredoc(&data, argc, argv) == -1)
 			return (EXIT_FAILURE);
+	}
 	else
 	{
 		if (setup_normal(&data, argc, argv) == -1)
